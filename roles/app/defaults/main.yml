@@ -1,0 +1,5 @@
+# defaults file for app
+HOST_DATABASE: "test"
+USER_DATABASE: "test"
+PASSWORD_DATABASE: "test"
+PATH_APP_DEST: "/home/ec2-user"

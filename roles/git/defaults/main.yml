@@ -1,0 +1,5 @@
+# defaults file for git
+REPO_ORIGIN: "DDDD"
+PATH_APP_DEST: "home/ec2-user"
+DEPLOY_BRANCH: "main"
+

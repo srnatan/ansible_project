@@ -1,0 +1,22 @@
+plugin: aws_ec2
+regions:
+- us-east-1
+
+aws_profile: srnatan_sso
+
+filters:
+  instance-state-name: "running"
+  tag:owner:
+  - "jonatan.dguez"
+  tag:env:
+  - "prod"
+  network-interface.subnet-id:
+  - "subnet-0e9da15171723c09f"
+  - "subnet-0af2dbe5ee9b2b734"
+
+keyed_groups:
+- key: tags.AnsibleGroup
+  separator: ""
+- key: tags.GitGroup
+  separator: ""
+

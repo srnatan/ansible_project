@@ -1,0 +1,26 @@
+- name: "deploy app"
+  hosts: EC2_1
+  roles:
+  - role: "server-setup"
+  - role: "efs"
+  - role: "nginx"
+  - role: "git"
+  - role: "rds"
+  - role: "app"
+
+
+
+# 1. Server-Setup (python, git, nfs-utils) ✅
+# 2. Montaje EFS ✅
+# 3. Instalar Nginx ✅
+# 4. Clonar repositorio ✅
+# 5. Instalar requerimientos app
+# 6. Creación usuario y base de datos (instalación MariaDB??)
+# 7. Correr Servidores 
+
+# - role: "server-setup"
+#   - role: "efs"
+#   - role: "nginx"
+#   - role: "git"
+#   - role: "rds"
+#   - role: "app"

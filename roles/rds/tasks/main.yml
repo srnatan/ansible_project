@@ -1,0 +1,4 @@
+# tasks file for rds
+- include_tasks: 01_mariadb_install.yml
+- include_tasks: 02_connect_rds.yml
+- include_tasks: 03_create_env.yml

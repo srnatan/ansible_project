@@ -1,0 +1,8 @@
+# vars file for rds
+rds_host: "rds_url"
+rds_port: 3306
+rds_user: "user_rds"
+rds_password: "pass_rds"
+db_name: "db_custom_name"
+db_user: "name_for_user"
+db_password: "pass_for_user"

@@ -1,0 +1,3 @@
+REPO_ORIGIN: "https://github.com/cloudcampla/bootcamp-devops-app.git"
+PATH_APP_DEST: "/mnt/efs/microblog"
+DEPLOY_BRANCH: "main"

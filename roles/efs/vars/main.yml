@@ -1,0 +1,2 @@
+# vars file for efs
+efs_url: "fs-0fa55b8270f7678f5.efs.us-east-1.amazonaws.com"

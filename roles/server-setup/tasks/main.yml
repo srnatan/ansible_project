@@ -1,0 +1,3 @@
+# tasks file for server-setup
+- include_tasks: 01_setup.yml
+

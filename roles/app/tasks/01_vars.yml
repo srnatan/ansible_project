@@ -1,0 +1,24 @@
+- name: Instalar paquetes Python desde una variable
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    virtualenv: "/mnt/efs/microblog/venv"
+  loop: "{{ PACKAGE_PY_APP }}"
+  become: yes
+
+- name: Ejecutar migraciones de la base de datos Flask
+  ansible.builtin.shell: flask db upgrade
+  args:
+    chdir: /mnt/efs/microblog
+  environment:
+    PATH: "/mnt/efs/microblog/venv/bin:{{ ansible_env.PATH }}"
+  become: yes
+  when: "'clone' in group_names"
+
+- name: Correr aplicación Flask
+  ansible.builtin.shell: flask run --host=0.0.0.0
+  args:
+    chdir: /mnt/efs/microblog
+  environment:
+    PATH: "/mnt/efs/microblog/venv/bin:{{ ansible_env.PATH }}"
+    FLASK_APP: microblog.py
+  become: yes

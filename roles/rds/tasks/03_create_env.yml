@@ -1,0 +1,13 @@
+- name: Crear directorio /env/
+  file:
+    path: /mnt/efs/microblog/env/
+    state: directory
+  become: true
+  when: "'clone' in group_names"
+
+- name: Crear archivo .env
+  template:
+    src: templates/env_template.j2
+    dest: /mnt/efs/microblog/env/.env
+  become: true
+  when: "'clone' in group_names"

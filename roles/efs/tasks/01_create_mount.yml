@@ -1,0 +1,24 @@
+- name: Start NFS service
+  become: true
+  service:
+    name: nfs
+    state: started
+    enabled: yes
+
+- name: Create mount point directory
+  become: true
+  file:
+    path: /mnt/efs
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Mount EFS
+  become: true
+  mount:
+    path: /mnt/efs
+    src: "{{ efs_url }}:/"
+    fstype: nfs4
+    state: mounted
+    opts: defaults

@@ -1,0 +1,28 @@
+- name: Crear base de datos
+  ansible.builtin.mysql_db:
+    login_host: "{{ rds_host }}"
+    login_port: "{{ rds_port }}"
+    login_user: "{{ rds_user }}"
+    login_password: "{{ rds_password }}"
+    name: "{{ db_name }}"
+    state: present
+  when: "'clone' in group_names"
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.7
+
+- name: Crear usuario de base de datos
+  ansible.builtin.mysql_user:
+    login_host: "{{ rds_host }}"
+    login_port: "{{ rds_port }}"
+    login_user: "{{ rds_user }}"
+    login_password: "{{ rds_password }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    priv: "{{ db_name }}.*:ALL"
+    host: "%"
+    state: present
+  when: "'clone' in group_names"
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.7

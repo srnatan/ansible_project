@@ -1,0 +1,2 @@
+# tasks file for efs
+- include_tasks: 01_create_mount.yml

@@ -1,0 +1,14 @@
+- name: "get code from github repo"
+  git:
+    repo: "{{ REPO_ORIGIN }}"
+    dest: "{{ PATH_APP_DEST }}"
+    version: "{{ DEPLOY_BRANCH }}"
+  when: "'clone' in group_names"
+  become: true
+
+- name: Crear entorno virtual con Python 3.8
+  command: python3.8 -m venv /mnt/efs/microblog/venv
+  args:
+    creates: /mnt/efs/microblog/venv
+  become: yes
+  when: "'clone' in group_names"

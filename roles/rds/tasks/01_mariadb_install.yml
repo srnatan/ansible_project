@@ -1,0 +1,12 @@
+- name: Instalar Mariadb
+  become: true
+  yum:
+    name: mariadb-server
+    state: present
+
+- name: Iniciar servicio maridb
+  become: true
+  service:
+    name: mariadb
+    state: started
+    enabled: yes

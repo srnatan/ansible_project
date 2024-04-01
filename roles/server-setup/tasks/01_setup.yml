@@ -1,0 +1,42 @@
+- name: Upgrade system packages
+  become: true
+  yum:
+    name: '*'
+    state: latest
+
+- name: Install git
+  become: true
+  yum:
+    name: git
+    state: present
+
+- name: Instalar Python 3.8 en Amazon Linux 2
+  ansible.builtin.command: amazon-linux-extras install python3.8 -y
+  become: true
+
+- name: Install pip for Python 3
+  become: true
+  yum:
+    name: python3-pip
+    state: latest
+
+- name: Install NFS utilities
+  become: true
+  yum:
+    name: nfs-utils
+    state: present
+
+- name: Install PyMySQL for connect RDS
+  become: true
+  pip:
+    name: pymysql
+    state: present
+    executable: pip3
+
+- name: Install Python3 env
+  become: true
+  pip:
+    name: virtualenv
+    state: present
+    executable: pip3
+
